@@ -6,8 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <Import Project="..\SharedLayer\SharedLayer.projitems" Label="Shared" />
+
   <ItemGroup>
-    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+    <ProjectReference Include="..\ApplicationLayer\ApplicationLayer.csproj" />
     <ProjectReference Include="..\DomainLayer\DomainLayer.csproj" />
   </ItemGroup>
 

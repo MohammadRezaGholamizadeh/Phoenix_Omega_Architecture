@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <Import Project="..\SharedLayer\SharedLayer.projitems" Label="Shared" />
+
+  <Import Project="..\ConfigurationLayer\ConfigurationLayer.projitems" Label="Shared" />
+
 </Project>
