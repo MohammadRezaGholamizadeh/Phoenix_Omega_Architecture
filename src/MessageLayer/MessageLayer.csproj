@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\InfrastructureLayer\InfrastructureLayer.csproj" />
-    <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj" />
   </ItemGroup>
 
 </Project>

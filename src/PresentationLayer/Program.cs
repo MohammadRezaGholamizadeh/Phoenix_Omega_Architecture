@@ -1,25 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
+using Autofac;
+using ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurations;
 
-// Add services to the container.
+new Startup()
+    .CreateHostBuilderWithAutofacConfig<AutofacConfig>(
+        args,
+        new ContainerBuilder())
+       .Build()
+       .Run();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
