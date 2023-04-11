@@ -25,21 +25,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9291B1E4-5F7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{77000C78-AF6A-4C3B-8536-E2B02AC23D6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestsLayer", "Tests\UnitTestsLayer\UnitTestsLayer.csproj", "{9D39808E-C313-415B-BDD7-5779CB4D80D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestsLayer", "Tests\UnitTestsLayer\UnitTestsLayer.csproj", "{9D39808E-C313-415B-BDD7-5779CB4D80D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTools", "Tests\TestTools\TestTools.csproj", "{EAE27093-63D7-4D6C-BB22-E1083655C178}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTools", "Tests\TestTools\TestTools.csproj", "{EAE27093-63D7-4D6C-BB22-E1083655C178}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		ConfigurationLayer\ConfigurationLayer.projitems*{3ec91c60-a0ac-4452-9f80-1ee9ff10c8d0}*SharedItemsImports = 5
-		SharedLayer\SharedLayer.projitems*{3ec91c60-a0ac-4452-9f80-1ee9ff10c8d0}*SharedItemsImports = 5
-		ConfigurationLayer\ConfigurationLayer.projitems*{47e3d536-14b5-49cd-af29-9c73284cd24d}*SharedItemsImports = 5
-		SharedLayer\SharedLayer.projitems*{47e3d536-14b5-49cd-af29-9c73284cd24d}*SharedItemsImports = 5
 		SharedLayer\SharedLayer.projitems*{6c8331f2-edc2-49c1-9669-6bc75bd423b9}*SharedItemsImports = 13
-		SharedLayer\SharedLayer.projitems*{a6e0c0fc-c81d-4d3c-8042-b691141b1252}*SharedItemsImports = 5
 		ConfigurationLayer\ConfigurationLayer.projitems*{ab9157b2-fc4b-43df-9f06-c610f373e752}*SharedItemsImports = 13
-		ConfigurationLayer\ConfigurationLayer.projitems*{d17ffbf6-f366-4688-b01f-1a4c4760164a}*SharedItemsImports = 5
-		SharedLayer\SharedLayer.projitems*{d17ffbf6-f366-4688-b01f-1a4c4760164a}*SharedItemsImports = 5
 		ConfigurationLayer\ConfigurationLayer.projitems*{f49fe49c-a2c7-406b-8e33-4cce22b0d36a}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -15,8 +15,4 @@
     <Folder Include="AppliactionServices\ColorsAppService\Exceptions\" />
   </ItemGroup>
 
-  <Import Project="..\SharedLayer\SharedLayer.projitems" Label="Shared" />
-
-  <Import Project="..\ConfigurationLayer\ConfigurationLayer.projitems" Label="Shared" />
-
 </Project>

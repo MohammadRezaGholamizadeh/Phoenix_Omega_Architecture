@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Controllers.Colors
 {
-    [Route("api/v1/colors")]
+    [Route("api/v{version:apiVersion}/colors")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class ColorsController : ControllerBase
     {
         private readonly IColorAppService _colorAppService;
