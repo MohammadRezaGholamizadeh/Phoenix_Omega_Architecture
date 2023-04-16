@@ -1,11 +1,11 @@
-using ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurations;
+using InfrastructureLayer.PresentationLayerConfigurations;
 using PresentationLayer;
 
-new Startup()
-    .CreateHostBuilderWithAutofacConfig(
-        args,
-        new AutofacConfig())
-       .Run();
+StartupConfiguration
+    .CreateHostWithAutofacConfig(
+     args,
+     typeof(Startup))
+    .Run();
 
 
 
