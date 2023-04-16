@@ -10,7 +10,8 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
     {
         private readonly IServiceCollection _services;
 
-        public ServiceCollectionConfigurationSetter(IServiceCollection services)
+        public ServiceCollectionConfigurationSetter(
+            IServiceCollection services)
         {
             _services = services;
         }
@@ -50,6 +51,7 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
             _services.AddAutofac();
             return this;
         }
+
 
         public ServiceCollectionConfigurationSetter AddCors()
         {
@@ -169,5 +171,4 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
             return info;
         }
     }
-
 }

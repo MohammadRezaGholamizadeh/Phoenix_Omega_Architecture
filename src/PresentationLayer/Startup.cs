@@ -6,6 +6,12 @@ namespace PresentationLayer
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
+        public Startup(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         public void ConfigureServices(IServiceCollection services)
         {
             StartupConfiguration.ConfigureServices(
@@ -13,25 +19,18 @@ namespace PresentationLayer
                 typeof(Program).Assembly);
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(
+            IApplicationBuilder app, 
+            IWebHostEnvironment env)
         {
             StartupConfiguration.Configure(app, env);
         }
 
-        public void ConfigureContainer(ContainerBuilder builder)
+        public void ConfigureContainer(
+            ContainerBuilder builder)
         {
-            StartupConfiguration.ConfigureContainer(builder);
-        }
-
-        public IHost CreateHostBuilderWithAutofacConfig(
-        string[] args,
-        object autoFacConfigInstance)
-        {
-            return StartupConfiguration.CreateHostWithAutofacConfig(
-               args,
-               autoFacConfigInstance,
-               typeof(AutofacConfig),
-               typeof(Startup));
+            AutofacConfig
+                .Configure(builder, _configuration);
         }
     }
 }

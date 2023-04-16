@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using InfrastructureLayer.MigrationLayerConfigurations.Contracts;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
@@ -106,6 +107,16 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                     options.DocumentTitle = $"Phoenix Omega Architecture API Documentation";
                 });
             }
+            return this;
+        }
+
+        public ApplicationBuilderConfigurationSetter InitializeDataBase()
+        {
+            var dbInitializer =
+                _app.ApplicationServices
+                   .GetRequiredService<IMigrationRunner>();
+
+            dbInitializer.Initialize(null);
             return this;
         }
     }

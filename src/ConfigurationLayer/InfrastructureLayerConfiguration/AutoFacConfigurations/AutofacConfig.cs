@@ -6,15 +6,23 @@ using Autofac;
 using DataAccessLayer.EFTech.EFDataContexts;
 using DataAccessLayer.EFTech.EFRepositories.Colors;
 using DataAccessLayer.EFTech.UnitOfWorks;
+using InfrastructureLayer.ConfigurationsJson;
+using InfrastructureLayer.MigrationLayerConfigurations.Contracts;
+using MigrationLayer;
 using ServiceLayer.RepositoryInterface;
 using ServiceLayer.Services.ColorService;
 
 namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurations
 {
-    public class AutofacConfig
+    public static class AutofacConfig
     {
-        public ContainerBuilder Configure(ContainerBuilder builder)
+        public static ContainerBuilder Configure(
+            ContainerBuilder builder,
+            IConfiguration configuration)
         {
+            SystemRequirementService(builder, configuration);
+            var dataAccessConfig = configuration.GetDataAccessConfig();
+
             builder.RegisterAssemblyTypes(typeof(ColorAppService).Assembly)
                   .AssignableTo<IApplicationService>()
                   .AsImplementedInterfaces()
@@ -32,7 +40,8 @@ namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurati
 
             builder.RegisterType<EFDataContext>()
                    .AsSelf()
-                   .WithParameter("connectionString", "server=.;database=Yooz-DemoStage;Trusted_Connection = true")
+                   .WithParameter("connectionString",
+                                  dataAccessConfig.ConnectionString)
                    .InstancePerLifetimeScope();
 
             builder.RegisterType<EFUnitOfWork>()
@@ -40,6 +49,16 @@ namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurati
                    .InstancePerLifetimeScope();
 
             return builder;
+        }
+
+        private static void SystemRequirementService(
+            ContainerBuilder builder,
+            IConfiguration configuration)
+        {
+
+            builder.RegisterType<MigrationRunner>()
+                .As<IMigrationRunner>()
+                .SingleInstance();
         }
     }
 }

@@ -22,6 +22,7 @@
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
     <ProjectReference Include="..\InfrastructureLayer\InfrastructureLayer.csproj" />
     <ProjectReference Include="..\MessageLayer\MessageLayer.csproj" />
+    <ProjectReference Include="..\MigrationLayer\MigrationLayer.csproj" />
     <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj" />
   </ItemGroup>
 
