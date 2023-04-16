@@ -13,7 +13,7 @@ namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurati
 {
     public class AutofacConfig
     {
-        public void Configure(ContainerBuilder builder)
+        public ContainerBuilder Configure(ContainerBuilder builder)
         {
             builder.RegisterAssemblyTypes(typeof(ColorAppService).Assembly)
                   .AssignableTo<IApplicationService>()
@@ -38,6 +38,8 @@ namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurati
             builder.RegisterType<EFUnitOfWork>()
                    .As<UnitOfWork>()
                    .InstancePerLifetimeScope();
+
+            return builder;
         }
     }
 }

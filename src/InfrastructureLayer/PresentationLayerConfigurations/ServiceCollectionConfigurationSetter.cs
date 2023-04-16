@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 namespace InfrastructureLayer.PresentationLayerConfigurations
 {
@@ -56,9 +57,11 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
             return this;
         }
 
-        public ServiceCollectionConfigurationSetter AddMvcCore()
+        public ServiceCollectionConfigurationSetter AddMvcCore(
+            Assembly presentationAssembly)
         {
-            _services.AddMvcCore();
+            _services.AddMvcCore()
+                     .AddApplicationPart(presentationAssembly);
             return this;
         }
 
