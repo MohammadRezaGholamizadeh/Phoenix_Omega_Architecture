@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
+using Serilog.Sinks.SystemConsole.Themes;
 using System.Reflection;
 
 namespace InfrastructureLayer.PresentationLayerConfigurations
@@ -55,8 +57,19 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
         {
             var hostBuilder =
                 Host.CreateDefaultBuilder(args)
-                    .UseServiceProviderFactory(
-                        new AutofacServiceProviderFactory());
+                .UseSerilog(
+                    (_, config) =>
+                    {
+                        config.WriteTo
+                                 .Console(
+                                    theme: AnsiConsoleTheme.Literate
+                                    //outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {Message:lj} {Properties:j}{NewLine}"
+                                    )
+                              .ReadFrom
+                                 .Configuration(_.Configuration);
+                    })
+                .UseServiceProviderFactory(
+                    new AutofacServiceProviderFactory());
 
             ConfigurationJson.BindConfigurationJsons(hostBuilder);
 
