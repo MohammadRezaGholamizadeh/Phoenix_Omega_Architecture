@@ -1,11 +1,14 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using InfrastructureLayer.ConfigurationsJson;
+using InfrastructureLayer.PresentationLayerConfigurations.ExtensionConfigurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Serilog.Events;
+using Serilog.Formatting.Compact;
 using Serilog.Sinks.SystemConsole.Themes;
 using System.Reflection;
 
@@ -57,17 +60,7 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
         {
             var hostBuilder =
                 Host.CreateDefaultBuilder(args)
-                .UseSerilog(
-                    (_, config) =>
-                    {
-                        config.WriteTo
-                                 .Console(
-                                    theme: AnsiConsoleTheme.Literate
-                                    //outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {Message:lj} {Properties:j}{NewLine}"
-                                    )
-                              .ReadFrom
-                                 .Configuration(_.Configuration);
-                    })
+                .UseSerilogWithCustomizedConfiguration()
                 .UseServiceProviderFactory(
                     new AutofacServiceProviderFactory());
 

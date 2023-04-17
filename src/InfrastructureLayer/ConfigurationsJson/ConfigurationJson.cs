@@ -14,10 +14,7 @@ namespace InfrastructureLayer.ConfigurationsJson
                 (context, config) =>
                 {
                     var path =
-                        Path.GetDirectoryName(
-                             typeof(StartupConfiguration)
-                             .Assembly
-                             .Location) + @"\ConfigurationsJson";
+                        Directory.GetCurrentDirectory() + @"\ConfigurationsJson";
 
                     config.SetBasePath(path)
                           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
