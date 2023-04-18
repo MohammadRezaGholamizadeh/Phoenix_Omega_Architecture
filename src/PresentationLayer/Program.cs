@@ -4,8 +4,7 @@ using PresentationLayer;
 StartupConfiguration
     .CreateHostWithAutofacConfig(
      args,
-     typeof(Startup))
-    .Run();
+     typeof(Startup));
 
 
 

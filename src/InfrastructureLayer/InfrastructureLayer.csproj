@@ -9,6 +9,10 @@
 	
 	<ItemGroup>
 		<PackageReference Include="Autofac" Version="6.5.0" />
+		<PackageReference Include="Hangfire" Version="1.7.30" />
+		<PackageReference Include="Hangfire.AspNetCore" Version="1.7.30" />
+		<PackageReference Include="Hangfire.Core" Version="1.7.30" />
+		<PackageReference Include="Hangfire.SQLite" Version="1.4.2" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.4" />
 		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.ApiExplorer" Version="2.2.0" />

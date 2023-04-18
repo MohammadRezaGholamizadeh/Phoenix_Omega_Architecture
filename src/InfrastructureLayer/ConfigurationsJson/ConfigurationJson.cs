@@ -1,5 +1,4 @@
 ﻿using InfrastructureLayer.DataAccessConfigurations;
-using InfrastructureLayer.PresentationLayerConfigurations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
@@ -19,6 +18,7 @@ namespace InfrastructureLayer.ConfigurationsJson
                     config.SetBasePath(path)
                           .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                           .AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true)
+                          .AddJsonFile("BackgroundJobConfigurations.json", optional: true, reloadOnChange: true)
                           .AddEnvironmentVariables()
                           .Build();
                 });
