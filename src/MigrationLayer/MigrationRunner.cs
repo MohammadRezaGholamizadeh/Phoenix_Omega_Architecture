@@ -1,7 +1,9 @@
 ﻿using FluentMigrator.Runner;
+using InfrastructureLayer.ConfigurationsJson;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using IMigrationRunner =
       InfrastructureLayer.MigrationLayerConfigurations
                          .Contracts.IMigrationRunner;
@@ -11,14 +13,29 @@ namespace MigrationLayer
     public class MigrationRunner : IMigrationRunner
     {
         private static IConfiguration _configuration;
+        private readonly ILogger<MigrationRunner> _logger;
 
-        public MigrationRunner(IConfiguration configuration)
+        public MigrationRunner(
+            IConfiguration configuration,
+            ILogger<MigrationRunner> logger)
         {
             _configuration = configuration;
+            _logger = logger;
         }
         public void Initialize(string[]? args)
         {
+            var dataAccessSetting =
+                _configuration.GetDataAccessConfig();
+
             RunRootMigrations(args);
+
+
+            _logger.LogInformation(
+                Environment.NewLine + "*** Data Base Initialized Successfully !!! ****"
+                + Environment.NewLine
+                + $"[ Data Base Provider : {dataAccessSetting.DBProvider} ]" + Environment.NewLine
+                + $"[ Data Base Name : {dataAccessSetting.DataBaseName} ]" + Environment.NewLine
+                );
         }
         public static void RunRootMigrations(string[]? args)
         {
@@ -84,8 +101,7 @@ namespace MigrationLayer
             var settings = new MigrationSettings();
             settings.ConnectionString =
                 configuration
-                .GetSection("DataAccessConfig")
-                .GetValue<string>("ConnectionString");
+                .GetDataAccessConfig().ConnectionString;
 
             return settings;
         }

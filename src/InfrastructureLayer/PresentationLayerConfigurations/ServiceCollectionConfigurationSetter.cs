@@ -1,5 +1,7 @@
 ﻿using Autofac.Extensions.DependencyInjection;
+using InfrastructureLayer.BackgroundJobsConfiguration.HangfireConfigurations;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -64,6 +66,13 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
         {
             _services.AddMvcCore()
                      .AddApplicationPart(presentationAssembly);
+            return this;
+        }
+
+        public ServiceCollectionConfigurationSetter AddHangfireBackgroundJobConfiguration(
+           IConfiguration configuration)
+        {
+            _services.AddHangfireConfiguration(configuration);
             return this;
         }
 

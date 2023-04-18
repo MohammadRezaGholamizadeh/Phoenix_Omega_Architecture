@@ -16,11 +16,12 @@ namespace PresentationLayer
         {
             StartupConfiguration.ConfigureServices(
                 services,
+                _configuration,
                 typeof(Program).Assembly);
         }
 
         public void Configure(
-            IApplicationBuilder app, 
+            IApplicationBuilder app,
             IWebHostEnvironment env)
         {
             StartupConfiguration.Configure(app, env);
