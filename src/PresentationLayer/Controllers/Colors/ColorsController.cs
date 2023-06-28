@@ -33,9 +33,10 @@ namespace PresentationLayer.Controllers.Colors
         [HttpPost("HangFireTest")]
         public async Task<int> TestHangfireJob(AddColorDto addColorDto)
         {
-            //_backgroundJobClient.Enqueue(() => _logger.LogInformation("sss"));
             var jobId =
-                _backgroundJobClient.Schedule(() => _logger.LogInformation("sss"),TimeSpan.FromMilliseconds(1));
+                _backgroundJobClient
+                .Schedule(() => Console.WriteLine("Test Hangfire Delayed !!! "),
+                                TimeSpan.FromSeconds(5));
             return await _colorAppService.Add(addColorDto);
         }
     }

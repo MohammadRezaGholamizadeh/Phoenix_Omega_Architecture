@@ -82,7 +82,6 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                         Environment.ProcessorCount
                 };
             using var server = new BackgroundJobServer(hangfireOptions);
-
         }
     }
 }
