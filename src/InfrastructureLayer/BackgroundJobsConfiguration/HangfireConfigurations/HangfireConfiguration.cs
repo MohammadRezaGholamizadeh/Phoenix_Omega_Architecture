@@ -70,7 +70,6 @@ namespace InfrastructureLayer.BackgroundJobsConfiguration.HangfireConfigurations
                     {
                         config.UseSQLiteStorage(dataAccessConfiguration.ConnectionString);
                         return config;
-
                     }
                 default:
                     return config;
