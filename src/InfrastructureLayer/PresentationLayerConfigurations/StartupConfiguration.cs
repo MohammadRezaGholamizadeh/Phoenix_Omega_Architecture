@@ -48,7 +48,8 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                 .UseHealthChecks()
                 .UseHttpsRedirection()
                 .UseSwaggerAndSwaggerUI()
-                .InitializeDataBase();
+                .InitializeDataBase()
+                .UseHangfireDashboard();
         }
         public static void ConfigureContainer(ContainerBuilder builder)
         {
@@ -82,7 +83,6 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                         Environment.ProcessorCount
                 };
             using var server = new BackgroundJobServer(hangfireOptions);
-
         }
     }
 }

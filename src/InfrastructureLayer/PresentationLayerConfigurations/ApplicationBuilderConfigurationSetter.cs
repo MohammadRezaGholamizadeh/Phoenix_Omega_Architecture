@@ -1,4 +1,5 @@
-﻿using InfrastructureLayer.MigrationLayerConfigurations.Contracts;
+﻿using Hangfire;
+using InfrastructureLayer.MigrationLayerConfigurations.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -73,6 +74,11 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                     .AllowAnyMethod()
                     .AllowAnyOrigin();
             });
+            return this;
+        }
+        public ApplicationBuilderConfigurationSetter UseHangfireDashboard()
+        {
+            _app.UseHangfireDashboard();
             return this;
         }
 
