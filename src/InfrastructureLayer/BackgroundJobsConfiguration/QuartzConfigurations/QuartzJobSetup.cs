@@ -9,7 +9,7 @@ namespace InfrastructureLayer.BackgroundJobsConfiguration.QuartzConfigurations
             this IServiceCollectionQuartzConfigurator configurator)
         {
             configurator.AddJob<SampleJob>("sampleJobIdentity")
-                        .AddCroneTrigger("sampleTriggerIdentity", "0/5 * * * * ?");
+                        .AddCroneTrigger("sampleTriggerIdentity", "0/59 * * * * ?");
 
             return configurator;
         }
