@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Quartz;
 using System.Reflection;
 
 namespace InfrastructureLayer.PresentationLayerConfigurations
@@ -30,6 +31,7 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                 .AddAuthorization()
                 .AddApiVersioning()
                 .AddEndpointsApiExplorer()
+                .AddQuartzBackgroundJob()
                 .AddHangfireBackgroundJobConfiguration(configuration)
                 .AddSwaggerGen();
         }
