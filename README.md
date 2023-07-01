@@ -1,18 +1,22 @@
 # Phoenix_Omega_Architecture
 This architecture was created and designed by me (MohammadReza Gholamizadeh[Phoenix]), and it is a new software development architecture that combines the following architectures to incorporate the capabilities of most software architectures into itself. This architecture is called the Phoenix Omega Architecture.
 
-Layered Architecture
-Event-Driven Architecture
-Service-Oriented Architecture
-Message-Oriented Middleware Architecture
-Microservices Architecture
-Hierarchical Architecture
-Distributed Architecture
-Parallel Computing Architecture
-Cloud Computing Architecture
-Clean Architecture
-Onion Architecture
-Hexagonal Architecture
+Layered Architecture ,
+Event-Driven Architecture ,
+Service-Oriented Architecture ,
+Message-Oriented Middleware Architecture ,
+Microservices Architecture ,
+Hierarchical Architecture ,
+Distributed Architecture ,
+Parallel Computing Architecture ,
+Cloud Computing Architecture ,
+Clean Architecture ,
+Onion Architecture ,
+Hexagonal Architecture ,
+
+The Tools That Implemented In This Infratructure Are :
+1. Hangfire
+2. Quartz
 
 The aim is to incorporate all the capabilities and benefits of these architectures into this new architecture while adhering to the majority of software design principles.
 
