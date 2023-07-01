@@ -1,5 +1,6 @@
 ﻿using Autofac.Extensions.DependencyInjection;
 using InfrastructureLayer.BackgroundJobsConfiguration.HangfireConfigurations;
+using InfrastructureLayer.BackgroundJobsConfiguration.QuartzConfigurations;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -51,6 +52,12 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
         public ServiceCollectionConfigurationSetter AddAutofac()
         {
             _services.AddAutofac();
+            return this;
+        }
+
+        public ServiceCollectionConfigurationSetter AddQuartzBackgroundJob()
+        {
+            _services.AddQuartzBackgroundJob();
             return this;
         }
 
