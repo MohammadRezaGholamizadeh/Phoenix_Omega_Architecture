@@ -6,6 +6,8 @@ using Autofac;
 using DataAccessLayer.EFTech.EFDataContexts;
 using DataAccessLayer.EFTech.EFRepositories.Colors;
 using DataAccessLayer.EFTech.UnitOfWorks;
+using IdentityLayer.AspDotNetIdentity.Services;
+using IdentityLayer.AspDotNetIdentity.Services.Contracts;
 using InfrastructureLayer.ConfigurationsJson;
 using InfrastructureLayer.MigrationLayerConfigurations.Contracts;
 using MigrationLayer;
@@ -28,7 +30,8 @@ namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurati
                   .AsImplementedInterfaces()
                   .InstancePerLifetimeScope();
 
-            builder.RegisterAssemblyTypes(typeof(ColorService).Assembly)
+            builder.RegisterAssemblyTypes(typeof(ColorService).Assembly,
+                                          typeof(IdentityAppService).Assembly)
                    .AssignableTo<IService>()
                    .AsImplementedInterfaces()
                    .InstancePerLifetimeScope();

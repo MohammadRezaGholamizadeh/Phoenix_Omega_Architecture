@@ -9,8 +9,11 @@ namespace IdentityLayer.AspDotNetIdentity.Domain
             Mobile = mobile;
             CreationDate = creationDate;
         }
+        public ApplicationUser()
+        {
 
-        public Mobile? Mobile { get; set; }
+        }
+        public Mobile Mobile { get; set; }
         public DateTime CreationDate { get; set; }
         public ApplicationUserRefreshToken? RefreshToken { get; set; }
     }

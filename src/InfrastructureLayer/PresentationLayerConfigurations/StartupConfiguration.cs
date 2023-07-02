@@ -56,6 +56,7 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                 .InitializeDataBase()
                 .UseHangfireDashboard();
         }
+
         public static void ConfigureContainer(ContainerBuilder builder)
         {
         }

@@ -46,7 +46,7 @@ namespace InfrastructureLayer.IdentityConfigurations.AspIdentities
                 }).AddEntityFrameworkStores<EFDataContext>()
                   .AddDefaultTokenProviders();
 
-            var jwtSection = 
+            var jwtSection =
                 configuration
                 .GetSection($"{nameof(AspIdentityConfig)}:{nameof(JwtBearerTokenSetting)}s");
             services.Configure<JwtBearerTokenSetting>(jwtSection);
@@ -79,7 +79,7 @@ namespace InfrastructureLayer.IdentityConfigurations.AspIdentities
 
                 options.AddQueryStringAuthentication();
             });
-
+            services.AddHttpContextAccessor();
             return services;
         }
 
