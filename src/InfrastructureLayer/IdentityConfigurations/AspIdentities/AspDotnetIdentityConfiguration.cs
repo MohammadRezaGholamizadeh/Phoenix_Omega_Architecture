@@ -1,6 +1,8 @@
-﻿using IdentityLayer.AspDotNetIdentity.Domain;
+﻿using DataAccessLayer.EFTech.EFDataContexts;
+using IdentityLayer.AspDotNetIdentity.Domain;
 using Invio.Extensions.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -14,10 +16,8 @@ namespace InfrastructureLayer.IdentityConfigurations.AspIdentities
             this IServiceCollection services,
             IConfiguration configuration)
         {
-
             var aspIdentityConfig =
                 configuration.GetAspIdentityConfig();
-            var key = Encoding.ASCII.GetBytes(aspIdentityConfig.JwtBearerTokenConfig.SecretKey);
             services.AddIdentity<ApplicationUser, ApplicationRole>(
                 setup =>
                 {
@@ -43,8 +43,16 @@ namespace InfrastructureLayer.IdentityConfigurations.AspIdentities
 
                     setup.Lockout.AllowedForNewUsers =
                             aspIdentityConfig.LockoutAllowedForNewUsers;
-                })
-                ;
+                }).AddEntityFrameworkStores<EFDataContext>()
+                  .AddDefaultTokenProviders();
+
+            var jwtSection = 
+                configuration
+                .GetSection($"{nameof(AspIdentityConfig)}:{nameof(JwtBearerTokenSetting)}s");
+            services.Configure<JwtBearerTokenSetting>(jwtSection);
+            var jwtBearerTokenSettings = jwtSection.Get<JwtBearerTokenSetting>();
+            var key = Encoding.ASCII.GetBytes(jwtBearerTokenSettings.SecretKey);
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme =
@@ -54,14 +62,14 @@ namespace InfrastructureLayer.IdentityConfigurations.AspIdentities
                         JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                options.RequireHttpsMetadata = aspIdentityConfig.JwtBearerTokenConfig.RequireHttpsMetadata;
-                options.SaveToken = aspIdentityConfig.JwtBearerTokenConfig.SaveToken;
-                options.Audience = aspIdentityConfig.JwtBearerTokenConfig.Audience;
+                options.RequireHttpsMetadata = aspIdentityConfig.JwtBearerTokenSettings.RequireHttpsMetadata;
+                options.SaveToken = aspIdentityConfig.JwtBearerTokenSettings.SaveToken;
+                options.Audience = aspIdentityConfig.JwtBearerTokenSettings.Audience;
 
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
-                    ValidIssuer = aspIdentityConfig.JwtBearerTokenConfig.Audience,
+                    ValidIssuer = aspIdentityConfig.JwtBearerTokenSettings.Audience,
                     ValidateAudience = true,
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
@@ -70,11 +78,10 @@ namespace InfrastructureLayer.IdentityConfigurations.AspIdentities
                 };
 
                 options.AddQueryStringAuthentication();
-            }); ;
+            });
 
             return services;
         }
-
 
         public static AspIdentityConfig GetAspIdentityConfig(
            this IConfiguration configuration)
@@ -83,33 +90,5 @@ namespace InfrastructureLayer.IdentityConfigurations.AspIdentities
             configuration.Bind(nameof(AspIdentityConfig), aspIdentityConfig);
             return aspIdentityConfig;
         }
-    }
-
-    public class AspIdentityConfig
-    {
-        public PasswordConfig PasswordConfig { get; set; }
-        public JwtBearerTokenConfig JwtBearerTokenConfig { get; set; }
-        public bool LockoutAllowedForNewUsers { get; set; }
-
-    }
-
-    public class PasswordConfig
-    {
-        public bool RequireNonAlphanumeric { get; set; }
-        public bool RequireLowercase { get; set; }
-        public bool RequireUppercase { get; set; }
-        public int RequiredLength { get; set; }
-        public bool RequireDigit { get; set; }
-    }
-
-    public class JwtBearerTokenConfig
-    {
-        public string SecretKey { get; set; }
-        public string Audience { get; set; }
-        public string Issuer { get; set; }
-        public int ExpiryTimeInSeconds { get; set; }
-        public int RefreshTokenExpiryTimeInSeconds { get; set; }
-        public bool RequireHttpsMetadata { get; set; }
-        public bool SaveToken { get; set; }
     }
 }

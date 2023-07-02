@@ -20,19 +20,22 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
             IConfiguration configuration,
             Assembly presentationAssembly)
         {
-            new ServiceCollectionConfigurationSetter(services)
+            new ServiceCollectionConfigurationSetter(
+                    services,
+                    configuration)
                 .AddAutofac()
+                .AddAuthorization()
+                .AddAspIdentity()
                 .AddCors()
                 .AddRouting()
                 .AddHealthChecks()
                 .AddControllers()
                 .AddHttpContextAccessor()
                 .AddMvcCore(presentationAssembly)
-                .AddAuthorization()
                 .AddApiVersioning()
                 .AddEndpointsApiExplorer()
                 .AddQuartzBackgroundJob()
-                .AddHangfireBackgroundJobConfiguration(configuration)
+                .AddHangfireBackgroundJobConfiguration()
                 .AddSwaggerGen();
         }
 
@@ -66,7 +69,7 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                 .UseSerilogWithCustomizedConfiguration()
                 .UseServiceProviderFactory(
                     new AutofacServiceProviderFactory());
-
+            
             ConfigurationJson.BindConfigurationJsons(hostBuilder);
 
             hostBuilder
