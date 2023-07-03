@@ -1,6 +1,8 @@
 ﻿using ApplicationLayer.AppliactionServices.ColorsAppService.Contracts.Dtos;
 using IdentityLayer.AspDotNetIdentity.Domain;
 using IdentityLayer.AspDotNetIdentity.Services.Contracts;
+using IdentityLayer.AspDotNetIdentity.Services.Contracts.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,14 +22,22 @@ namespace PresentationLayer.Controllers.Identities
 
         [HttpPost]
         public async Task<IdentityResult> InitializeUser(
-            ApplicationUser applicationUser)
+            AddApplicationUserDto dto)
         {
-            return await _identityService.InitializeUser(applicationUser);
+            return await _identityService.InitializeUser(dto);
         }
+
         [HttpGet("all")]
         public async Task<List<ApplicationUser>> GetAllUsers()
         {
             return await _identityService.GetAllUsers();
+        }
+
+        [HttpPost("login")]
+        [AllowAnonymous]
+        public async Task<GetLoginDto> LogIn(LoginDto dto)
+        {
+            return await _identityService.LoginUser(dto);
         }
     }
 }

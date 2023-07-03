@@ -1,5 +1,5 @@
 ﻿using DomainLayer.Entities.Color;
-using ServiceLayer.RepositoryInterface;
+using ServiceLayer.Setups.RepositoryInterface;
 
 namespace ServiceLayer.Services.ColorService.Contracts
 {

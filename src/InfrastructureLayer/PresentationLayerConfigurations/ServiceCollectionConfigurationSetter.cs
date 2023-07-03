@@ -100,7 +100,8 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                         options.AddPolicy(
                             "Admin", policy
                                => policy.RequireAuthenticatedUser()
-                                        .RequireRole("Admin")));
+                                        .RequireRole("Admin"))
+                        );
             return this;
         }
 

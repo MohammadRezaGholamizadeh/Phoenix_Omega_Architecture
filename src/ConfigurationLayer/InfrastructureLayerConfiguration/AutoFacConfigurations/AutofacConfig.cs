@@ -9,10 +9,12 @@ using DataAccessLayer.EFTech.UnitOfWorks;
 using IdentityLayer.AspDotNetIdentity.Services;
 using IdentityLayer.AspDotNetIdentity.Services.Contracts;
 using InfrastructureLayer.ConfigurationsJson;
+using InfrastructureLayer.IdentityConfigurations.AspIdentities;
+using InfrastructureLayer.IdentityConfigurations.TokensManager;
 using InfrastructureLayer.MigrationLayerConfigurations.Contracts;
 using MigrationLayer;
-using ServiceLayer.RepositoryInterface;
 using ServiceLayer.Services.ColorService;
+using ServiceLayer.Setups.RepositoryInterface;
 
 namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurations
 {
@@ -22,6 +24,9 @@ namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurati
             ContainerBuilder builder,
             IConfiguration configuration)
         {
+            var jwtBearerTokenSetting = 
+                configuration.GetAspIdentityConfig()
+                             .JwtBearerTokenSettings;
             SystemRequirementService(builder, configuration);
             var dataAccessConfig = configuration.GetDataAccessConfig();
 
@@ -31,8 +36,10 @@ namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurati
                   .InstancePerLifetimeScope();
 
             builder.RegisterAssemblyTypes(typeof(ColorService).Assembly,
-                                          typeof(IdentityAppService).Assembly)
+                                          typeof(IdentityAppService).Assembly,
+                                          typeof(TokenAppManager).Assembly)
                    .AssignableTo<IService>()
+                   .WithParameter(new TypedParameter(typeof(JwtBearerTokenSetting) , jwtBearerTokenSetting))
                    .AsImplementedInterfaces()
                    .InstancePerLifetimeScope();
 

@@ -14,6 +14,15 @@ namespace DataAccessLayer.EFTech.EFRepositories.Identities
             _context = context;
         }
 
+        public async Task<ApplicationUser?> FindUserByUserNameOrEmail(string username)
+        {
+            username = username.ToLowerInvariant();
+            return await _context.Users
+                                 .Where(_ => (_.UserName != null && _.UserName.ToLower() == username)
+                                          || (_.Email != null && _.Email.ToLower() == username))
+                                 .SingleOrDefaultAsync();
+        }
+
         public async Task<List<ApplicationUser>> GetAllUser()
         {
             return await _context.ApplicationUsers.ToListAsync();
