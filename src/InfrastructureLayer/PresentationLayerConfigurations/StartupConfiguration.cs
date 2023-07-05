@@ -20,19 +20,22 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
             IConfiguration configuration,
             Assembly presentationAssembly)
         {
-            new ServiceCollectionConfigurationSetter(services)
+            new ServiceCollectionConfigurationSetter(
+                    services,
+                    configuration)
                 .AddAutofac()
+                .AddAuthorization()
                 .AddCors()
                 .AddRouting()
+                .AddAspIdentity()
                 .AddHealthChecks()
                 .AddControllers()
                 .AddHttpContextAccessor()
                 .AddMvcCore(presentationAssembly)
-                .AddAuthorization()
                 .AddApiVersioning()
                 .AddEndpointsApiExplorer()
                 .AddQuartzBackgroundJob()
-                .AddHangfireBackgroundJobConfiguration(configuration)
+                .AddHangfireBackgroundJobConfiguration()
                 .AddSwaggerGen();
         }
 
@@ -43,9 +46,9 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
             new ApplicationBuilderConfigurationSetter(app)
                 .UseCors()
                 .UseRouting()
-                .UseEndpointsToConfigHealthCheck()
-                .UseAuthorization()
                 .UseAuthentication()
+                .UseAuthorization()
+                .UseEndpointsToConfigHealthCheck()
                 .UseEndpointsToMapControllers()
                 .UseHealthChecks()
                 .UseHttpsRedirection()
@@ -53,6 +56,7 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                 .InitializeDataBase()
                 .UseHangfireDashboard();
         }
+
         public static void ConfigureContainer(ContainerBuilder builder)
         {
         }
@@ -66,7 +70,7 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                 .UseSerilogWithCustomizedConfiguration()
                 .UseServiceProviderFactory(
                     new AutofacServiceProviderFactory());
-
+            
             ConfigurationJson.BindConfigurationJsons(hostBuilder);
 
             hostBuilder

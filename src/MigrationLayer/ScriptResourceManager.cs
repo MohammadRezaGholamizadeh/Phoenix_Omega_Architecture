@@ -7,7 +7,7 @@
             var assembly = typeof(ScriptResourceManager).Assembly;
             var resourcesBasePath = typeof(ScriptResourceManager).Namespace;
 
-            var resourcePath = $"{resourcesBasePath}.{name}";
+            var resourcePath = $"{resourcesBasePath}.Migrations.Scripts.{name}";
 
             using (var stream =
                        assembly.GetManifestResourceStream(resourcePath))

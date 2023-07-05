@@ -9,8 +9,8 @@ using DataAccessLayer.EFTech.EFRepositories.Colors;
 using DataAccessLayer.EFTech.UnitOfWorks;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using ServiceLayer.RepositoryInterface;
 using ServiceLayer.Services.ColorService;
+using ServiceLayer.Setups.RepositoryInterface;
 using System;
 using System.Collections.Generic;
 

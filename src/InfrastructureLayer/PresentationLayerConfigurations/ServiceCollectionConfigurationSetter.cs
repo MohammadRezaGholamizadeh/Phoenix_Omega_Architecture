@@ -1,6 +1,7 @@
 ﻿using Autofac.Extensions.DependencyInjection;
 using InfrastructureLayer.BackgroundJobsConfiguration.HangfireConfigurations;
 using InfrastructureLayer.BackgroundJobsConfiguration.QuartzConfigurations;
+using InfrastructureLayer.IdentityConfigurations.AspIdentities;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,11 +13,14 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
     public class ServiceCollectionConfigurationSetter
     {
         private readonly IServiceCollection _services;
+        private readonly IConfiguration _configuration;
 
         public ServiceCollectionConfigurationSetter(
-            IServiceCollection services)
+               IServiceCollection services,
+               IConfiguration configuration)
         {
             _services = services;
+            _configuration = configuration;
         }
 
         public ServiceCollectionConfigurationSetter AddRouting()
@@ -34,6 +38,12 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
         public ServiceCollectionConfigurationSetter AddHealthChecks()
         {
             _services.AddHealthChecks();
+            return this;
+        }
+
+        public ServiceCollectionConfigurationSetter AddAspIdentity()
+        {
+            _services.AddAspIdentity(_configuration);
             return this;
         }
 
@@ -76,10 +86,9 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
             return this;
         }
 
-        public ServiceCollectionConfigurationSetter AddHangfireBackgroundJobConfiguration(
-           IConfiguration configuration)
+        public ServiceCollectionConfigurationSetter AddHangfireBackgroundJobConfiguration()
         {
-            _services.AddHangfireConfiguration(configuration);
+            _services.AddHangfireConfiguration(_configuration);
             return this;
         }
 
@@ -91,7 +100,8 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                         options.AddPolicy(
                             "Admin", policy
                                => policy.RequireAuthenticatedUser()
-                                        .RequireRole("Admin")));
+                                        .RequireRole("Admin"))
+                        );
             return this;
         }
 

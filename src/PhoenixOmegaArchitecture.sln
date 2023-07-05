@@ -29,14 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestsLayer", "Tests\Uni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTools", "Tests\TestTools\TestTools.csproj", "{EAE27093-63D7-4D6C-BB22-E1083655C178}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrationLayer", "MigrationLayer\MigrationLayer.csproj", "{5FD698FE-6C4A-4CE0-845D-139A7D577D54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MigrationLayer", "MigrationLayer\MigrationLayer.csproj", "{5FD698FE-6C4A-4CE0-845D-139A7D577D54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityLayer", "IdentityLayer\IdentityLayer.csproj", "{8DAE1C5F-3735-4C22-9B1D-5758FFE6434B}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		SharedLayer\SharedLayer.projitems*{6c8331f2-edc2-49c1-9669-6bc75bd423b9}*SharedItemsImports = 13
-		ConfigurationLayer\ConfigurationLayer.projitems*{ab9157b2-fc4b-43df-9f06-c610f373e752}*SharedItemsImports = 13
-		ConfigurationLayer\ConfigurationLayer.projitems*{f49fe49c-a2c7-406b-8e33-4cce22b0d36a}*SharedItemsImports = 5
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -82,6 +79,10 @@ Global
 		{5FD698FE-6C4A-4CE0-845D-139A7D577D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FD698FE-6C4A-4CE0-845D-139A7D577D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FD698FE-6C4A-4CE0-845D-139A7D577D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DAE1C5F-3735-4C22-9B1D-5758FFE6434B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DAE1C5F-3735-4C22-9B1D-5758FFE6434B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DAE1C5F-3735-4C22-9B1D-5758FFE6434B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DAE1C5F-3735-4C22-9B1D-5758FFE6434B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,8 +100,14 @@ Global
 		{9D39808E-C313-415B-BDD7-5779CB4D80D5} = {77000C78-AF6A-4C3B-8536-E2B02AC23D6A}
 		{EAE27093-63D7-4D6C-BB22-E1083655C178} = {77000C78-AF6A-4C3B-8536-E2B02AC23D6A}
 		{5FD698FE-6C4A-4CE0-845D-139A7D577D54} = {9291B1E4-5F7C-4041-B922-CAFC6DFABB63}
+		{8DAE1C5F-3735-4C22-9B1D-5758FFE6434B} = {9291B1E4-5F7C-4041-B922-CAFC6DFABB63}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92DA5332-480B-4D73-89FF-6BBF0D2E6390}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SharedLayer\SharedLayer.projitems*{6c8331f2-edc2-49c1-9669-6bc75bd423b9}*SharedItemsImports = 13
+		ConfigurationLayer\ConfigurationLayer.projitems*{ab9157b2-fc4b-43df-9f06-c610f373e752}*SharedItemsImports = 13
+		ConfigurationLayer\ConfigurationLayer.projitems*{f49fe49c-a2c7-406b-8e33-4cce22b0d36a}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal
