@@ -29,12 +29,19 @@
 		<PackageReference Include="Serilog.Sinks.SQLite" Version="5.0.0" />
 		<PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Stimulsoft.Reports.Engine.NetCore.Cracked" Version="2019.4.2" />
 	</ItemGroup>
 	
 	
 	<ItemGroup>
+    <EmbeddedResource Include="Reports\StimulSoftReports\TestReports\MrtFiles\TestReport.mrt" />
 	  <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
 	  <ProjectReference Include="..\IdentityLayer\IdentityLayer.csproj" />
+	</ItemGroup>
+	
+	
+	<ItemGroup>
+	  <Folder Include="Reports\StimulSoftReports\TestReports\Contracts\Dtos\" />
 	</ItemGroup>
 
 </Project>

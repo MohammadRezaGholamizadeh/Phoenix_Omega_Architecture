@@ -20,6 +20,7 @@ namespace InfrastructureLayer.ConfigurationsJson
                           .AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true)
                           .AddJsonFile("BackgroundJobConfigurations.json", optional: true, reloadOnChange: true)
                           .AddJsonFile("AspIdentityConfiguration.json", optional: true, reloadOnChange: true)
+                          .AddJsonFile("StimulsoftConfiguration.json", optional: true, reloadOnChange: true)
                           .AddEnvironmentVariables()
                           .Build();
                 });
