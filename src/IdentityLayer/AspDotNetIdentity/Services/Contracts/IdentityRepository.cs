@@ -1,5 +1,5 @@
 ﻿using IdentityLayer.AspDotNetIdentity.Domain;
-using ServiceLayer.Setups.RepositoryInterface;
+using ServiceLayer.Setups.RepositoryInterfaces;
 
 namespace IdentityLayer.AspDotNetIdentity.Services.Contracts
 {

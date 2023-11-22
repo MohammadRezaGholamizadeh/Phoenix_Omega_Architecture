@@ -1,20 +1,17 @@
-﻿using ApplicationLayer.AppliactionServices.ColorsAppService;
-using ApplicationLayer.ApplicationServiceInterface;
-using ApplicationLayer.InfraInterfaces.UnitOfWorks;
-using ApplicationLayer.ServiceInterface;
-using Autofac;
+﻿using Autofac;
 using DataAccessLayer.EFTech.EFDataContexts;
 using DataAccessLayer.EFTech.EFRepositories.Colors;
 using DataAccessLayer.EFTech.UnitOfWorks;
 using IdentityLayer.AspDotNetIdentity.Services;
-using IdentityLayer.AspDotNetIdentity.Services.Contracts;
 using InfrastructureLayer.ConfigurationsJson;
 using InfrastructureLayer.IdentityConfigurations.AspIdentities;
 using InfrastructureLayer.IdentityConfigurations.TokensManager;
 using InfrastructureLayer.MigrationLayerConfigurations.Contracts;
 using MigrationLayer;
 using ServiceLayer.Services.ColorService;
-using ServiceLayer.Setups.RepositoryInterface;
+using ServiceLayer.Services.ColorService.Contracts;
+using ServiceLayer.Setups.RepositoryInterfaces;
+using ServiceLayer.Setups.ServicecInterfaces;
 
 namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurations
 {
@@ -24,22 +21,22 @@ namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurati
             ContainerBuilder builder,
             IConfiguration configuration)
         {
-            var jwtBearerTokenSetting = 
+            var jwtBearerTokenSetting =
                 configuration.GetAspIdentityConfig()
                              .JwtBearerTokenSettings;
             SystemRequirementService(builder, configuration);
             var dataAccessConfig = configuration.GetDataAccessConfig();
 
             builder.RegisterAssemblyTypes(typeof(ColorAppService).Assembly)
-                  .AssignableTo<IApplicationService>()
-                  .AsImplementedInterfaces()
-                  .InstancePerLifetimeScope();
+                   .AssignableTo<IService>()
+                   .AsImplementedInterfaces()
+                   .InstancePerLifetimeScope();
 
-            builder.RegisterAssemblyTypes(typeof(ColorService).Assembly,
+            builder.RegisterAssemblyTypes(typeof(IColorService).Assembly,
                                           typeof(IdentityAppService).Assembly,
                                           typeof(TokenAppManager).Assembly)
                    .AssignableTo<IService>()
-                   .WithParameter(new TypedParameter(typeof(JwtBearerTokenSetting) , jwtBearerTokenSetting))
+                   .WithParameter(new TypedParameter(typeof(JwtBearerTokenSetting), jwtBearerTokenSetting))
                    .AsImplementedInterfaces()
                    .InstancePerLifetimeScope();
 

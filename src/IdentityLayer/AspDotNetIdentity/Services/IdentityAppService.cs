@@ -4,7 +4,6 @@ using IdentityLayer.AspDotNetIdentity.Services.Contracts.Dtos;
 using IdentityLayer.AspDotNetIdentity.Services.Exceptions;
 using Microsoft.AspNetCore.Identity;
 using ServiceLayer.Setups.TokenManagerInterface;
-using System.Reflection.Metadata.Ecma335;
 
 namespace IdentityLayer.AspDotNetIdentity.Services
 {

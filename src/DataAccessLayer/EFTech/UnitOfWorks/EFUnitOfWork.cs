@@ -1,5 +1,5 @@
-﻿using ApplicationLayer.InfraInterfaces.UnitOfWorks;
-using DataAccessLayer.EFTech.EFDataContexts;
+﻿using DataAccessLayer.EFTech.EFDataContexts;
+using ServiceLayer.Setups.RepositoryInterfaces;
 
 namespace DataAccessLayer.EFTech.UnitOfWorks
 {

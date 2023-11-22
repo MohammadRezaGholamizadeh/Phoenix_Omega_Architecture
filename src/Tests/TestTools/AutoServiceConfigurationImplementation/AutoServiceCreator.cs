@@ -1,8 +1,4 @@
-﻿using ApplicationLayer.AppliactionServices.ColorsAppService;
-using ApplicationLayer.ApplicationServiceInterface;
-using ApplicationLayer.InfraInterfaces.UnitOfWorks;
-using ApplicationLayer.ServiceInterface;
-using Autofac;
+﻿using Autofac;
 using AutoServiceContainer;
 using DataAccessLayer.EFTech.EFDataContexts;
 using DataAccessLayer.EFTech.EFRepositories.Colors;
@@ -10,7 +6,9 @@ using DataAccessLayer.EFTech.UnitOfWorks;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using ServiceLayer.Services.ColorService;
-using ServiceLayer.Setups.RepositoryInterface;
+using ServiceLayer.Services.ColorService.Contracts;
+using ServiceLayer.Setups.RepositoryInterfaces;
+using ServiceLayer.Setups.ServicecInterfaces;
 using System;
 using System.Collections.Generic;
 
@@ -24,7 +22,6 @@ namespace TestTools.AutoServiceConfigurationImplementation
             Dictionary<Type, object> mockedServiceParameters,
             DbContext context)
         {
-
             container.RegisterAssemblyTypes(
                 typeof(EFColorRepository).Assembly)
                      .AssignableTo<IRepository>()
@@ -34,15 +31,8 @@ namespace TestTools.AutoServiceConfigurationImplementation
                      .InstancePerLifetimeScope();
 
             container.RegisterAssemblyTypes(
-                typeof(ColorService).Assembly)
+                     typeof(ColorAppService).Assembly)
                      .AssignableTo<IService>()
-                     .AsImplementedInterfaces()
-                     .WithConstructorParameters(mockedServiceParameters)
-                     .InstancePerLifetimeScope();
-
-            container.RegisterAssemblyTypes(
-                typeof(ColorAppService).Assembly)
-                     .AssignableTo<IApplicationService>()
                      .AsImplementedInterfaces()
                      .WithConstructorParameters(mockedServiceParameters)
                      .InstancePerLifetimeScope();

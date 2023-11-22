@@ -1,7 +1,7 @@
-﻿using ApplicationLayer.AppliactionServices.ColorsAppService.Contracts;
-using ApplicationLayer.AppliactionServices.ColorsAppService.Contracts.Dtos;
-using Hangfire;
+﻿using Hangfire;
 using Microsoft.AspNetCore.Mvc;
+using ServiceLayer.Services.ColorService.Contracts;
+using ServiceLayer.Services.ColorService.Contracts.Dtos;
 
 namespace PresentationLayer.Controllers.Colors
 {
@@ -10,12 +10,12 @@ namespace PresentationLayer.Controllers.Colors
     [ApiVersion("1.0")]
     public class ColorsController : ControllerBase
     {
-        private readonly IColorAppService _colorAppService;
+        private readonly IColorService _colorAppService;
         private readonly ILogger<ColorsController> _logger;
         private readonly IBackgroundJobClient _backgroundJobClient;
 
         public ColorsController(
-            IColorAppService colorAppService,
+            IColorService colorAppService,
             ILogger<ColorsController> logger,
             IBackgroundJobClient backgroundJobClient)
         {

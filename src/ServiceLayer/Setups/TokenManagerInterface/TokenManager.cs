@@ -1,4 +1,4 @@
-﻿using ApplicationLayer.ServiceInterface;
+﻿using ServiceLayer.Setups.ServicecInterfaces;
 using System.Security.Claims;
 
 namespace ServiceLayer.Setups.TokenManagerInterface

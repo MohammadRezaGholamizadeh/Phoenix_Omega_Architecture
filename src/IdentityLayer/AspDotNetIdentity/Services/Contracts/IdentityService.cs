@@ -1,7 +1,7 @@
-﻿using ApplicationLayer.ServiceInterface;
-using IdentityLayer.AspDotNetIdentity.Domain;
+﻿using IdentityLayer.AspDotNetIdentity.Domain;
 using IdentityLayer.AspDotNetIdentity.Services.Contracts.Dtos;
 using Microsoft.AspNetCore.Identity;
+using ServiceLayer.Setups.ServicecInterfaces;
 
 namespace IdentityLayer.AspDotNetIdentity.Services.Contracts
 {

@@ -1,4 +1,4 @@
-﻿using ApplicationLayer.ServiceInterface;
+﻿using ServiceLayer.Setups.ServicecInterfaces;
 
 namespace InfrastructureLayer.IdentityConfigurations.TokensManager
 {

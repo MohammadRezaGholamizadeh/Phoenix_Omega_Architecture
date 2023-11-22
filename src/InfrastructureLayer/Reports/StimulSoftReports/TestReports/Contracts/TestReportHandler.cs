@@ -1,4 +1,4 @@
-﻿using ApplicationLayer.ServiceInterface;
+﻿using ServiceLayer.Setups.ServicecInterfaces;
 
 namespace InfrastructureLayer.Reports.StimulSoftReports.TestReports.Contracts
 {

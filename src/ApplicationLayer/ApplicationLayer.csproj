@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AppliactionServices\ColorsAppService\Exceptions\" />
+    <Folder Include="AppliactionServices\" />
   </ItemGroup>
 
 </Project>

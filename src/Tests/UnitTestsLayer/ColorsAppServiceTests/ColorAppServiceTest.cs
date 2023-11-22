@@ -1,14 +1,14 @@
-﻿using ApplicationLayer.AppliactionServices.ColorsAppService.Contracts;
-using ApplicationLayer.AppliactionServices.ColorsAppService.Contracts.Dtos;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Phoenix.TestTools.Infrastructure;
+using ServiceLayer.Services.ColorService.Contracts;
+using ServiceLayer.Services.ColorService.Contracts.Dtos;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace UnitTestsLayer.ColorsAppServiceTests
 {
-    public class ColorAppServiceTest : UnitTestSut<IColorAppService>
+    public class ColorAppServiceTest : UnitTestSut<IColorService>
     {
         [Fact]
         public async Task Add_Color_Properly()
