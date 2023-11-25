@@ -12,6 +12,7 @@ CREATE TABLE [dbo].[ApplicationUsers](
     [ConcurrencyStamp] [nvarchar](max) NULL,
     [TwoFactorEnabled] [bit] NOT NULL,
     [LockoutEnd] [datetimeoffset](7) NULL,
+    [TenantId] [nvarchar](450) Not Null,
     [LockoutEnabled] [bit] NOT NULL,
     [AccessFailedCount] [int] NOT NULL,
     [Mobile_CountryCallingCode] [varchar](20) NOT NULL,

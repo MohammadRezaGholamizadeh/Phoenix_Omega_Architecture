@@ -12,6 +12,10 @@ namespace DataAccessLayer.EFTech.EFEntityMaps.Colors
 
             _.HasKey(_ => _.Id);
 
+            _.Property(_ => _.TenantId)
+                .HasMaxLength(450)
+                .IsRequired();
+
             _.Property(_ => _.Title)
                 .HasMaxLength(50)
                 .HasColumnName("Title")

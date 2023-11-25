@@ -79,7 +79,6 @@ namespace InfrastructureLayer.IdentityConfigurations.AspIdentities
 
                 options.AddQueryStringAuthentication();
             });
-            services.AddHttpContextAccessor();
             return services;
         }
 

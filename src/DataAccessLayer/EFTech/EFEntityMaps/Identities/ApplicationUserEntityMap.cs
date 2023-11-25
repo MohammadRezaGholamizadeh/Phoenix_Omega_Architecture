@@ -28,6 +28,12 @@ namespace DataAccessLayer.EFTech.EFEntityMaps.Identities
             builder.HasOne(_ => _.RefreshToken)
                    .WithOne(_ => _.User);
 
+            builder.Property(_ => _.TenantId).HasMaxLength(450).IsRequired();
+            builder.HasOne(_ => _.Organization)
+                   .WithMany()
+                   .HasForeignKey(_ => _.TenantId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
             builder.Ignore(e => e.EmailConfirmed)
                    .Ignore(e => e.NormalizedEmail)
                    .Ignore(e => e.PhoneNumber)

@@ -15,6 +15,7 @@ namespace MigrationLayer.Migrations.BusinessTables
             Create.Table("Colors")
                 .WithColumn("Id").AsInt32().PrimaryKey().Identity().NotNullable()
                 .WithColumn("Title").AsString(50).NotNullable()
+                .WithColumn("TenantId").AsString(450).NotNullable()
                 .WithColumn("ColorHex").AsString(50).NotNullable();
         }
     }

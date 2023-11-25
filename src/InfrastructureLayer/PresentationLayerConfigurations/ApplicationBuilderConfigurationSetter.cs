@@ -76,6 +76,7 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
             });
             return this;
         }
+
         public ApplicationBuilderConfigurationSetter UseHangfireDashboard()
         {
             _app.UseHangfireDashboard();

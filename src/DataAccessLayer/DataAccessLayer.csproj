@@ -13,6 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\AccessControlLayer\AccessControlLayer.csproj" />
 		<ProjectReference Include="..\ApplicationLayer\ApplicationLayer.csproj" />
 		<ProjectReference Include="..\DomainLayer\DomainLayer.csproj" />
 		<ProjectReference Include="..\IdentityLayer\IdentityLayer.csproj" />

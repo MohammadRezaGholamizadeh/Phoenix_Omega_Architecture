@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using ServiceLayer.Setups.TokenManagerInterface;
 using System.Net;
 using System.Security.Claims;
 
@@ -15,7 +16,7 @@ namespace InfrastructureLayer.IdentityConfigurations.TokensManager
 
         public string? UserId => GetUserIdFromJwtToken();
         public string? UserRole => GetUserRole();
-
+        public string TenantId => GetTenantIdFromHeader();
         private string GetUserIdFromJwtToken()
         {
             var userId = string.Empty;
@@ -29,6 +30,23 @@ namespace InfrastructureLayer.IdentityConfigurations.TokensManager
 
             GuardAgainstInvalidUserId(userId);
             return userId!;
+        }
+
+        private string GetTenantIdFromHeader()
+        {
+            if (_accessor.HttpContext != null)
+            {
+                return _accessor
+                       .HttpContext
+                       .Request
+                       .Headers
+                       .SingleOrDefault(_ => _.Key.ToLower()
+                                          == "tenantid").Value;
+            }
+            else
+            {
+                return default;
+            }
         }
 
         public string GetUserRole()

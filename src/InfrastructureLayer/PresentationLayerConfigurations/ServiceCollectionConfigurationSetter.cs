@@ -1,7 +1,9 @@
-﻿using Autofac.Extensions.DependencyInjection;
+﻿using AccessControlLayer.Infrastructure.MiddleWares;
+using Autofac.Extensions.DependencyInjection;
 using InfrastructureLayer.BackgroundJobsConfiguration.HangfireConfigurations;
 using InfrastructureLayer.BackgroundJobsConfiguration.QuartzConfigurations;
 using InfrastructureLayer.IdentityConfigurations.AspIdentities;
+using InfrastructureLayer.PresentationLayerConfigurations.MiddleWaresAndFilters;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,7 +33,10 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
 
         public ServiceCollectionConfigurationSetter AddControllers()
         {
-            _services.AddControllers();
+            _services.AddControllers(_ =>
+            {
+                //_.Filters.Add<AccessControlMiddleWare>(1);
+            });
             return this;
         }
 
@@ -64,6 +69,7 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
             _services.AddAutofac();
             return this;
         }
+
 
         public ServiceCollectionConfigurationSetter AddQuartzBackgroundJob()
         {
@@ -128,7 +134,7 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
             _services.AddSwaggerGen(options =>
             {
                 options.CustomSchemaIds(_ => _.FullName);
-
+                options.OperationFilter<SwaggerHeaderParameter>();
                 var versionProvider =
                         _services
                         .BuildServiceProvider()

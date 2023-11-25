@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ServiceLayer.Setups.TokenManagerInterface;
 
 namespace PresentationLayer.Controllers
 {
@@ -13,7 +14,8 @@ namespace PresentationLayer.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(
+            ILogger<WeatherForecastController> logger )
         {
             _logger = logger;
         }
