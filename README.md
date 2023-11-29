@@ -19,6 +19,9 @@ The Tools That Implemented In This Infratructure Are :
 2. Quartz
 3. Asp Identity
 4. StimulSoft Report
+5. Multi Tenancy
+6. AccessControl
+7. Asp Identity
 
 The aim is to incorporate all the capabilities and benefits of these architectures into this new architecture while adhering to the majority of software design principles.
 
