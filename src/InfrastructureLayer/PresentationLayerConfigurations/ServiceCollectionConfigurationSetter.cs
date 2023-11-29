@@ -1,5 +1,4 @@
-﻿using AccessControlLayer.Infrastructure.MiddleWares;
-using Autofac.Extensions.DependencyInjection;
+﻿using Autofac.Extensions.DependencyInjection;
 using InfrastructureLayer.BackgroundJobsConfiguration.HangfireConfigurations;
 using InfrastructureLayer.BackgroundJobsConfiguration.QuartzConfigurations;
 using InfrastructureLayer.IdentityConfigurations.AspIdentities;

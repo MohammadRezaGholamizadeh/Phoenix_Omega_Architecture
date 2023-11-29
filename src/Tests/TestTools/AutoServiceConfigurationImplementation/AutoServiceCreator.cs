@@ -5,9 +5,11 @@ using DataAccessLayer.EFTech.EFRepositories.Colors;
 using DataAccessLayer.EFTech.UnitOfWorks;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using Moq;
 using ServiceLayer.Services.ColorService;
 using ServiceLayer.Setups.RepositoryInterfaces;
 using ServiceLayer.Setups.ServicecInterfaces;
+using ServiceLayer.Setups.TokenManagerInterface;
 using System;
 using System.Collections.Generic;
 
@@ -55,7 +57,8 @@ namespace TestTools.AutoServiceConfigurationImplementation
 
         public override DbContext SqlServerConfiguration()
         {
-            return new EFDataContext(GetConnectionString());
+            var userManagementService = new Mock<UserTokenService>();
+            return new EFDataContext(GetConnectionString(), userManagementService.Object);
         }
     }
 }

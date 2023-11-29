@@ -1,6 +1,8 @@
-﻿namespace IdentityLayer.AspDotNetIdentity.Domain
+﻿using DomainLayer.Entities.Organizations;
+
+namespace IdentityLayer.AspDotNetIdentity.Domain
 {
-    public class Mobile
+    public class Mobile 
     {
         public Mobile() { }
 

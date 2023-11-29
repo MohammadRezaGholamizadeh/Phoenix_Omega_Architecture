@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using UserStoriesManagement.RestApi.Config;
 
 namespace InfrastructureLayer.PresentationLayerConfigurations
 {
@@ -121,9 +122,19 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
         {
             var dbInitializer =
                 _app.ApplicationServices
-                   .GetRequiredService<IMigrationRunner>();
+                   .GetRequiredService<AspIdentitySeedData>();
 
-            dbInitializer.Initialize(null);
+            dbInitializer.Initialize();
+            return this;
+        }
+
+        public ApplicationBuilderConfigurationSetter RunAllSeedData()
+        {
+            var aspIdentitySeedData =
+                _app.ApplicationServices
+                   .GetRequiredService<AspIdentitySeedData>();
+            aspIdentitySeedData.Initialize();
+
             return this;
         }
     }

@@ -1,6 +1,8 @@
+using DomainLayer.Entities.Organizations;
+
 namespace IdentityLayer.AspDotNetIdentity.Domain
 {
-    public class IdentitySmsVerificationCode
+    public class IdentitySmsVerificationCode : ITenant
     {
         public IdentitySmsVerificationCode()
         {
@@ -25,6 +27,7 @@ namespace IdentityLayer.AspDotNetIdentity.Domain
         public Mobile Mobile { get; set; }
         public bool IsVerified { get; set; }
         public SmsVerificationCodeUsage Usage { get; set; }
+        public string TenantId { get; set; }
     }
 
     public enum SmsVerificationCodeUsage : byte

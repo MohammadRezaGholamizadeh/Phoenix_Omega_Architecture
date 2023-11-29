@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using ServiceLayer.Setups.TokenManagerInterface;
 
 namespace PresentationLayer.Controllers
 {

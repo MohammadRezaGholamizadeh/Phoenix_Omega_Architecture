@@ -1,6 +1,8 @@
+using DomainLayer.Entities.Organizations;
+
 namespace IdentityLayer.AspDotNetIdentity.Domain
 {
-    public class ApplicationUserRefreshToken
+    public class ApplicationUserRefreshToken : ITenant
     {
         public ApplicationUserRefreshToken()
         {
@@ -15,7 +17,7 @@ namespace IdentityLayer.AspDotNetIdentity.Domain
             Token = token;
             RefreshTokenExpiryTime = refreshTokenExpiryTime;
         }
-
+        public string TenantId { get; set; }
         public string UserId { get; set; }
         public ApplicationUser? User { get; set; }
         public string Token { get; set; }

@@ -8,12 +8,12 @@ using InfrastructureLayer.IdentityConfigurations.AspIdentities;
 using InfrastructureLayer.IdentityConfigurations.TokensManager;
 using InfrastructureLayer.MigrationLayerConfigurations.Contracts;
 using MigrationLayer;
-using Moq;
 using ServiceLayer.Services.ColorService;
 using ServiceLayer.Services.ColorService.Contracts;
 using ServiceLayer.Setups.RepositoryInterfaces;
 using ServiceLayer.Setups.ServicecInterfaces;
 using ServiceLayer.Setups.TokenManagerInterface;
+using UserStoriesManagement.RestApi.Config;
 
 namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurations
 {
@@ -23,8 +23,17 @@ namespace ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurati
             ContainerBuilder builder,
             IConfiguration configuration)
         {
+
+            builder.RegisterType<AspIdentitySeedData>()
+                   .AsSelf()
+                   .InstancePerLifetimeScope();
+
             builder.RegisterType<UserTokenAppService>()
                    .As<UserTokenService>()
+                   .InstancePerLifetimeScope();
+
+            builder.RegisterType<AccessControlLayer.Infrastructure.UserTokenAppService>()
+                   .As<AccessControlLayer.Infrastructure.UserTokenService>()
                    .InstancePerLifetimeScope();
 
             var jwtBearerTokenSetting =

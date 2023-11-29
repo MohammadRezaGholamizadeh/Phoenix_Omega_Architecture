@@ -53,7 +53,8 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                 .UseHttpsRedirection()
                 .UseSwaggerAndSwaggerUI()
                 .InitializeDataBase()
-                .UseHangfireDashboard();
+                .UseHangfireDashboard()
+                .RunAllSeedData();
         }
 
         public static void ConfigureContainer(ContainerBuilder builder)
