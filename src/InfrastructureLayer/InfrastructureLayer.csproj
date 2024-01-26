@@ -26,22 +26,26 @@
 		<PackageReference Include="Quartz.AspNetCore" Version="3.6.3" />
 		<PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
 		<PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
+		<PackageReference Include="Magick.NET-Q8-AnyCPU" Version="11.1.0" />
 		<PackageReference Include="Serilog.Sinks.SQLite" Version="5.0.0" />
 		<PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
+		<PackageReference Include="Sentry.AspNetCore" Version="2.1.8" />
+		<PackageReference Include="Sentry" Version="2.1.8" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="Stimulsoft.Reports.Engine.NetCore.Cracked" Version="2019.4.2" />
 	</ItemGroup>
 	
 	
 	<ItemGroup>
-    <EmbeddedResource Include="Reports\StimulSoftReports\TestReports\MrtFiles\TestReport.mrt" />
+    <EmbeddedResource Include="Components\Reports\StimulSoftReports\TestReports\MrtFiles\TestReport.mrt" />
 	  <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
 	  <ProjectReference Include="..\IdentityLayer\IdentityLayer.csproj" />
 	</ItemGroup>
 	
 	
 	<ItemGroup>
-	  <Folder Include="Reports\StimulSoftReports\TestReports\Contracts\Dtos\" />
+	  <Folder Include="Components\Reports\StimulSoftReports\TestReports\Contracts\Dtos\" />
+	  <Folder Include="Services\Images\" />
 	</ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-using InfrastructureLayer.PresentationLayerConfigurations;
+using InfrastructureLayer.Configurations.PresentationLayerConfigurations;
 using PresentationLayer;
 
 StartupConfiguration

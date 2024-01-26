@@ -4,7 +4,7 @@ using ServiceLayer.Services.ColorService.Contracts.Dtos;
 using TestTools.AutoServiceConfigurationImplementation;
 using Xunit;
 
-namespace UnitTestsLayer.ColorsAppServiceTests
+namespace IntegrationServiceTestsLayer.ColorsAppServiceTests
 {
     public class ColorAppServiceTest : IntegrationSut<IColorService>
     {

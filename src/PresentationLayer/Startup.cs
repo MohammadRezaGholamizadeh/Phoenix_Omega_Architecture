@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using ConfigurationLayer.InfrastructureLayerConfiguration.AutoFacConfigurations;
-using InfrastructureLayer.PresentationLayerConfigurations;
+using InfrastructureLayer.Configurations.PresentationLayerConfigurations;
 
 namespace PresentationLayer
 {

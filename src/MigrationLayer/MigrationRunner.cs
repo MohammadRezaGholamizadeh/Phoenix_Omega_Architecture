@@ -1,12 +1,11 @@
 ﻿using FluentMigrator.Runner;
-using InfrastructureLayer.ConfigurationsJson;
+using InfrastructureLayer.Configurations.ConfigurationsJson;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using IMigrationRunner =
-      InfrastructureLayer.MigrationLayerConfigurations
-                         .Contracts.IMigrationRunner;
+      InfrastructureLayer.Configurations.MigrationLayerConfigurations.Contracts.IMigrationRunner;
 
 namespace MigrationLayer
 {

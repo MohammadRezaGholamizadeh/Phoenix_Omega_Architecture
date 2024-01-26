@@ -1,4 +1,4 @@
-﻿using InfrastructureLayer.Reports.StimulSoftReports.TestReports.Contracts;
+﻿using InfrastructureLayer.Components.Reports.StimulSoftReports.TestReports.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using MimeMapping;
 
