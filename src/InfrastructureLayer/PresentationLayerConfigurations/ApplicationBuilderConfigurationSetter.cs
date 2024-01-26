@@ -90,7 +90,7 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
                 .GetRequiredService<IApiVersionDescriptionProvider>();
             var environment =
                 _app.ApplicationServices
-                .GetRequiredService<IHostEnvironment>();
+                    .GetRequiredService<IHostEnvironment>();
 
             if (environment.IsDevelopment())
             {

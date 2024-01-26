@@ -66,17 +66,18 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
         {
             var hostBuilder =
                 Host.CreateDefaultBuilder(args)
-                .UseSerilogWithCustomizedConfiguration()
-                .UseServiceProviderFactory(
-                    new AutofacServiceProviderFactory());
-            
-            ConfigurationJson.BindConfigurationJsons(hostBuilder);
+                    .UseSerilogWithCustomizedConfiguration()
+                    .UseServiceProviderFactory(
+                        new AutofacServiceProviderFactory());
 
+            ConfigurationJson.BindConfigurationJsons(hostBuilder);
             hostBuilder
                  .ConfigureWebHostDefaults(webBuilder =>
                  {
-                     webBuilder.UseKestrel();
+                     webBuilder.UseContentRoot(Directory.GetCurrentDirectory());
+                     webBuilder.SetHostUrlsAndEnvironment();
                      webBuilder.UseIISIntegration();
+                     webBuilder.UseKestrel();
                      webBuilder.UseStartup(startupType)
                                .UseContentRoot(Directory.GetCurrentDirectory());
                  });

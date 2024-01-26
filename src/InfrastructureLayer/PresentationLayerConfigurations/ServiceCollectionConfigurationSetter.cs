@@ -2,6 +2,7 @@
 using InfrastructureLayer.BackgroundJobsConfiguration.HangfireConfigurations;
 using InfrastructureLayer.BackgroundJobsConfiguration.QuartzConfigurations;
 using InfrastructureLayer.IdentityConfigurations.AspIdentities;
+using InfrastructureLayer.PresentationLayerConfigurations.ExtensionConfigurations;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -128,7 +129,7 @@ namespace InfrastructureLayer.PresentationLayerConfigurations
             _services.AddSwaggerGen(options =>
             {
                 options.CustomSchemaIds(_ => _.FullName);
-
+                options.OperationFilter<SwaggerHeaderParameter>();
                 var versionProvider =
                         _services
                         .BuildServiceProvider()
